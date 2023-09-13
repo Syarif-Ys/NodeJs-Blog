@@ -269,8 +269,8 @@ img {
 
 /* SearchBar */
 .searchBar {
-    /*visibility: hidden;
-    transform: translateY(-100px);*/
+    visibility: hidden;
+    transform: translateY(-100px);
     background-color: var(--black);
     padding: 4px 0;
     left: 0;
@@ -293,4 +293,31 @@ img {
     right: 0;
     color: var(--gray-light);
     padding: 15px;
+}
+
+/* Dashboard Admin */
+.admin-posts {
+    padding: 0;
+    margin: 0;
+}
+
+.admin-posts-controls form {
+    display: inline-block;
+}
+
+.admin-posts-controls .btn {
+    display: inline-block;
+    background-color: var(--black);
+    color: var(--gray-light);
+    border: 0;
+    text-decoration: none;
+    font-size: .8rem;
+    padding:  4px 8px;
+    line-height: 2;
+}
+
+.admin-posts li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
 }
