@@ -20,6 +20,7 @@ app.set('view engine', 'ejs');
 
 app.use('/', require('./server/routes/main'));
 
+
 app.get('', (req, res) => {
     res.send("Hello World");
 });
