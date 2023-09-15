@@ -32,6 +32,7 @@ try {
         current: page,
         nextPage: hasNextPage ? nextPage : null
     });
+
 } catch (error) {
     console.log(error);
 }
@@ -82,7 +83,7 @@ router.get('/post/:id', async (req, res) => {
 
         let slug = req.params.id;
 
-        const data = await Post.findById({_id: slug});
+        const data = await Post.findById({ _id: slug });
 
         const locals = {
             title: data.title,
