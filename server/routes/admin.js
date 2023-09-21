@@ -62,7 +62,7 @@ router.post('/admin', async (req, res) => {
        const user = await User.findOne( { username } );
 
        if(!user) {
-        return res.status(401).json( { message: 'Invalid creadential' });
+        return res.status(401).json( { message: 'Invalid credential' });
        }
 
        const isPasswordValid = await bcrypt.compare(password, user.password);
@@ -82,14 +82,51 @@ router.post('/admin', async (req, res) => {
 });
 
 /** 
- * 
- * Redirect - Dashboard
+ * GET /
+ * Admin Dashboard
 */
 
 router.get('/dashboard', authMiddleware, async (req, res ) => {
-    res.render('admin/dashboard');
+
+    try {
+        const locals = {
+            title: 'Dashboard',
+            description: 'Simple Blog created with NodeJs, Express & MongoDB.'
+        }
+
+        const data = await Post.find();
+        res.render('admin/dashboard', {
+            locals,
+            data,
+            layout: adminLayout
+        });
+    } catch (error) {
+        console.log(error);
+    }
 });
 
+    /** 
+ * GET /
+ * Admin - Create New Post
+*/
+
+router.get('/add-post', authMiddleware, async (req, res ) => {
+
+    try {
+        const locals = {
+            title: 'Add Post',
+            description: 'Simple Blog created with NodeJs, Express & MongoDB.'
+        }
+
+        const data = await Post.find();
+        res.render('admin/add-post', {
+            locals,
+            layout: adminLayout
+        });
+    } catch (error) {
+        console.log(error);
+    }
+});
     /** 
  * POST /
  * Admin - Register
